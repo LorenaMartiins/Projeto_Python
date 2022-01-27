@@ -9,7 +9,7 @@ casos_total = planilha["MEDIA DE CASOS"]
 print(casos_total[0])
 
 
-# --------------PDF----------------
+# -------------- PDF ----------------
 class PDF(FPDF):
     def header(self):
         self.image('kick.png', 10, 8, 33)
@@ -21,11 +21,8 @@ class PDF(FPDF):
         self.line(75, 20, 135, 20)
 
     def footer(self):
-        # Position at 1.5 cm from bottom
         self.set_y(-15)
-        # Arial italic 8
         self.set_font('Arial', 'I', 8)
-        # Page number
         self.cell(0, 10, 'Page ' + str(self.page_no()) + '/{nb}', 0, 0, 'C')
 
 
@@ -36,8 +33,7 @@ pdf.cell(w=0, h=120, txt=texto_1, align='C')
 pdf.image(name='covid.png', x=30, y=150, w=150)
 pdf.set_font('Times', '', 17)
 
-
-# --Text
+# ----------- Text -------------
 pdf.add_page()
 pdf.set_font('Times', '', 15)
 pdf.set_margins(10, 40, 0)
