@@ -8,3 +8,6 @@ Segue o script do projeto:
 
 O tema que eu escolhi foi sobre as mortes e casos no estado de São Paulo.
 # Título: A evolução do COVID-19 nos anos de 2020 e 2021 no estado de São Paulo.
+
+
+![medico_covid](https://user-images.githubusercontent.com/89862269/151887414-6b3c6245-8926-4208-92ed-a530c6004721.png)
