@@ -2,14 +2,47 @@ import os
 import pandas as pd
 from fpdf import FPDF
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+import numpy as np
 
 planilha = pd.read_excel("Dados-covid-19-SP.xlsx")
-casos_total = planilha["MEDIA DE CASOS"]
 
-print(casos_total[0])
 
+plt.style.use("fivethirtyeight")
+
+ages_x = [2020, 2021]
+x_indexes = np.arange(len(ages_x))
+width = 0.25
+
+dev_y = [577629.01, 3403484.48]
+plt.bar(x_indexes - width, dev_y, width=width,
+        color="#444444", label="Media de casos")
+
+py_dev_y = [471097, 820222]
+plt.bar(x_indexes, py_dev_y, width=width,
+        color="#008fd5", label="Media de casos/dia")
+
+js_dev_y = [161000, 297000]
+plt.bar(x_indexes + width, js_dev_y, width=width,
+        color="#e5ae38", label="Obitos")
+
+plt.legend()
+
+plt.xticks(ticks=x_indexes, labels=ages_x)
+
+plt.title("Median Salary (USD) by Age")
+plt.xlabel("Ano")
+plt.ylabel("Media")
+
+
+plt.tight_layout()
+
+plt.savefig('grafico_media.png')
+plt.close()
 
 # -------------- PDF ----------------
+
+
 class PDF(FPDF):
     def header(self):
         self.image('kick.png', 10, 8, 33)
@@ -37,9 +70,13 @@ pdf.set_font('Times', '', 17)
 pdf.add_page()
 pdf.set_font('Times', '', 15)
 pdf.set_margins(10, 40, 0)
-texto = 'No final de dezembro de 2019 o mundo se deparou com um novo desafio, uma nova realidade que viria ser nos anos seguintes. A sociedade se deparou com um virús mortal chamado coronavírus, foi denominada oficialmente como COVID-19, sigla em inglês para coronavirus disease 2019 . É um vírus que causa doença respiratória pelo agente coronavírus, com casos recentes registrados em várias partes do mundo.. Em casos extremos, pode levar a óbito. '
+texto = '   No final de dezembro de 2019 o mundo se deparou com um novo desafio, uma nova realidade que viria ser nos anos seguintes. A sociedade se deparou com um virús mortal chamado coronavírus, foi denominada oficialmente como COVID-19, (sigla em inglês para coronavirus disease 2019) .\n   - É um vírus que causa doença respiratória pelo agente coronavírus, com casos recentes registrados em várias partes do mundo. Em casos extremos, pode levar a óbito. '
 pdf.multi_cell(w=185, h=8, txt=texto, align='J')
 
+pdf.image()
+
 pdf.output('Covid-SP.pdf', 'F')
+
+plt.show()
 
 os.system("pause")
