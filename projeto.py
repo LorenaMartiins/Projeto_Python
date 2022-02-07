@@ -159,8 +159,8 @@ pdf.image(name='total_soma.png', x=30, y=100, w=150)
 pdf.image(name='grafico_total.png', x=30, y=150, w=150)
 
 pdf.add_page()
-pdf.image(name='grafico_casosdia.png', x=30, y=40, w=150)
-pdf.image(name='grafico_obitodia.png', x=30, y=120, w=150)
+pdf.image(name='grafico_casosdia.png', x=30, y=30, w=150)
+pdf.image(name='grafico_obitodia.png', x=30, y=150, w=150)
 
 pdf.add_page()
 pdf.set_font('Times', '', 15)
