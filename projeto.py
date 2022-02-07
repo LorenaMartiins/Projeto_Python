@@ -125,9 +125,9 @@ class PDF(FPDF):
         self.set_font('Arial', 'B', 15)
         self.cell(80)
         self.cell(
-            30, 10, 'PROJETO PYTHON', 0, 0, 'C')
+            30, 10, 'PROJETO PYTHON - COVID-19', 0, 0, 'C')
         self.ln(10)
-        self.line(75, 20, 135, 20)
+        self.line(60, 20, 150, 20)
 
     def footer(self):
         self.set_y(-15)
@@ -147,24 +147,33 @@ pdf.set_font('Times', '', 17)
 
 pdf.add_page()
 pdf.set_font('Times', '', 15)
-texto = '\n   No final de dezembro de 2019 o mundo se deparou com um novo desafio, uma nova realidade que viria ser nos anos seguintes. A sociedade se deparou com um virús mortal chamado coronavírus, foi denominada oficialmente como COVID-19, (sigla em inglês para coronavirus disease 2019) .\n - É um vírus que causa doença respiratória pelo agente coronavírus, com casos recentes registrados em várias partes do mundo. Em casos extremos, pode levar a óbito.\n   A seguir veremos alguns gráficos que mostrará a evolução do COVID-19 no estado de São Paulo: '
+texto = '\n   No final de dezembro de 2019 o mundo se deparou com um novo desafio, uma nova realidade que viria ser nos anos seguintes. A sociedade se deparou com um virús mortal chamado coronavírus, foi denominada oficialmente como COVID-19, (sigla em inglês para coronavirus disease 2019) .\n  É um vírus que causa doença respiratória pelo agente coronavírus, com casos recentes registrados em várias partes do mundo. Em casos extremos, pode levar a óbito.\n   Ele tem como principais sintomas: febre, cansaço e tosse seca. Outros sintomas menos comuns e que podem afetar alguns pacientes são: perda de paladar ou olfato, congestão nasal, conjuntivite, dor de garganta, dor de cabeça, dores nos músculos ou juntas, diferentes tipos de erupção cutânea, náusea ou vômito, diarreia, calafrios ou tonturas.\n   Em 26 de novembro de 2021, a OMS designou a variante da COVID-19 B.1.1.529 como uma variante de preocupação denominada Ômicron. Essa variante apresenta um grande número de mutações, algumas das quais preocupantes. As outras variantes de preocupação ainda estão em circulação e são: Alfa, Beta, Gama e Delta.\n    Dessa forma, quanto mais o vírus da COVID-19 circular, através da movimentação das pessoas, mais oportunidades terá de sofrer mutações. Portanto, a coisa mais importante que as pessoas podem fazer é reduzir o risco de exposição ao vírus e se vacinar contra a COVID-19 (com todas as doses necessárias, segundo o esquema de vacinação), continuar a usar máscaras, manter a higiene das mãos, deixar os ambientes bem ventilados sempre que possível, evitar aglomerações e reduzir ao máximo o contato próximo com muitas pessoas, principalmente em espaços fechados.\n   O estado de São Paulo ultrapassou a marca de 90% dos adultos com esquema vacinal completo em novembro de 2021. SP tem hoje a maior cobertura vacinal do Brasil e já vacinou mais que países como Alemanha, Reino Unido, Israel, Estados Unidos, Argentina, além da União Europeia, segundo dados do site Our World in Data. \n   A seguir veremos alguns gráficos que mostrará a evolução do COVID-19 no estado de São Paulo: \n '
 pdf.multi_cell(w=185, h=8, txt=texto, align='J')
 
 # ------- Tabelas e imagens ------
-pdf.image(name='total_soma.png', x=30, y=120, w=150)
-pdf.image(name='grafico_total.png', x=30, y=160, w=150)
+pdf.add_page()
+pdf.set_font('Times', '', 15)
+texto_tab1 = '\n  Na primeira tabela TOTAL SOMA e nos três gráficos a seguir mostra a soma total de janeiro a dezembro nos anos 2020 e 2021. Podemos ver que no ano 2021 teve muito mais casos e morte do que 2020, isso aconteceu porque o Brasil demorou para tomar a vacina, quando a população atingiu a 60% vacinados totalmente teve uma queda de casos e obitos, mas mesmo assim 2021 foi um ano que teve muitos casos e mortes.\n  OBS: no obitos/dia do ano 2020 foi calculado a partir de março, pois de janeiro até março não teve nenhuma morte, mas no ano 2021 foi contado de janeiro a dezembro.'
+pdf.multi_cell(w=185, h=8, txt=texto_tab1, align='J')
+pdf.image(name='total_soma.png', x=30, y=100, w=150)
+pdf.image(name='grafico_total.png', x=30, y=150, w=150)
+
+pdf.add_page()
+pdf.image(name='grafico_casosdia.png', x=30, y=40, w=150)
+pdf.image(name='grafico_obitodia.png', x=30, y=120, w=150)
 
 pdf.add_page()
 pdf.set_font('Times', '', 15)
-pdf.image(name='grafico_casosdia.png', x=30, y=40, w=150)
-pdf.image(name='grafico_obitodia.png', x=30, y=150, w=150)
+texto_tab2 = '\n  Na segunda tabela TOTAL %, ela mostra o crescimento do ano 2021 em relação ao anterior e podemos ver que teve um aumento bem significativo, em casos total teve um aumento de 694%, em casos/dia teve um aumento de 168%, em obitos/dia teve um aumento 232%, que parando para analisar e assustador ter essas porcentagens, já que esperamos que 2021 fosse tranquilo.'
+pdf.multi_cell(w=185, h=8, txt=texto_tab2, align='J')
+pdf.image(name='Total%.png', x=30, y=80, w=150)
+pdf.image(name='grafico_totalporc.png', x=5, y=120, w=200)
 
 pdf.add_page()
-pdf.image(name='Total%.png', x=30, y=50, w=150)
-pdf.image(name='grafico_totalporc.png', x=5, y=100, w=200)
-
-pdf.add_page()
-pdf.image(name='media.png', x=30, y=50, w=150)
+pdf.set_font('Times', '', 15)
+texto_tab3 = '\n  Na terceira tabela MÈDIA, ela mostra a média anual dos anos 2020 e 2021, no casos total podemos ver que a média anual de 2021 teve quase 6x o valor de 2020, no casos/dia quase dobrou o valor de 2020, em óbitos/dia teve um aumento de 84,5% em relação ao ano anterior.'
+pdf.multi_cell(w=185, h=8, txt=texto_tab3, align='J')
+pdf.image(name='media.png', x=30, y=80, w=150)
 pdf.image(name='grafico_media.png', x=30, y=120, w=150)
 
 pdf.add_page()
